@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 200px;
+      padding: 12px;
+      font-family: system-ui, sans-serif;
+      font-size: 14px;
+    }
+    h2 {
+      margin: 0 0 12px 0;
+      font-size: 14px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .btn-start {
+      background: #0a0;
+      color: #fff;
+    }
+    .btn-stop {
+      background: #c00;
+      color: #fff;
+    }
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .status {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h2>YouTube 自動跳過廣告</h2>
+  <button class="btn btn-start" id="btnStart">開始</button>
+  <button class="btn btn-stop" id="btnStop">停止</button>
+  <p class="status" id="status">讀取中…</p>
+  <script src="popup.js"></script>
+</body>
+</html>
