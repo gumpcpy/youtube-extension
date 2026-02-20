@@ -1,19 +1,17 @@
-const KEY_ENABLED = 'autoSkipEnabled';
+const STORAGE_KEY_HIDDEN = 'uiHidden';
 
-document.getElementById('btnStart').addEventListener('click', () => setEnabled(true));
-document.getElementById('btnStop').addEventListener('click', () => setEnabled(false));
-
-function setEnabled(enabled) {
-  chrome.storage.local.set({ [KEY_ENABLED]: enabled }, updateUI);
-}
-
-function updateUI() {
-  chrome.storage.local.get([KEY_ENABLED], (data) => {
-    const enabled = data[KEY_ENABLED] !== false;
-    document.getElementById('btnStart').disabled = enabled;
-    document.getElementById('btnStop').disabled = !enabled;
-    document.getElementById('status').textContent = enabled ? '已開啟（正在偵測）' : '已停止';
+document.getElementById('btnShow').addEventListener('click', () => {
+  // 清除隱藏狀態，讓 content script 顯示 UI
+  chrome.storage.local.set({ [STORAGE_KEY_HIDDEN]: false }, () => {
+    // 發送消息給 content script 讓它立即顯示 UI
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      if (tabs[0] && tabs[0].url && tabs[0].url.includes('youtube.com')) {
+        chrome.tabs.sendMessage(tabs[0].id, { action: 'showUI' }, (response) => {
+          if (chrome.runtime.lastError) {
+            console.log('發送消息失敗:', chrome.runtime.lastError);
+          }
+        });
+      }
+    });
   });
-}
-
-updateUI();
+});

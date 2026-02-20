@@ -4,49 +4,50 @@
   <meta charset="utf-8">
   <style>
     body {
-      width: 200px;
-      padding: 12px;
+      width: 180px;
+      padding: 16px;
       font-family: system-ui, sans-serif;
-      font-size: 14px;
+      font-size: 13px;
+      margin: 0;
     }
     h2 {
       margin: 0 0 12px 0;
       font-size: 14px;
+      font-weight: 600;
     }
     .btn {
       display: block;
       width: 100%;
-      padding: 8px 12px;
+      padding: 10px;
       margin-bottom: 8px;
       border: none;
       border-radius: 6px;
       font-size: 13px;
       cursor: pointer;
+      font-weight: 500;
     }
-    .btn-start {
-      background: #0a0;
+    .btn-show {
+      background: #0066cc;
       color: #fff;
     }
-    .btn-stop {
-      background: #c00;
-      color: #fff;
+    .btn-show:hover {
+      background: #0052a3;
     }
-    .btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-    .status {
-      margin-top: 8px;
-      font-size: 12px;
+    .info {
+      margin-top: 12px;
+      font-size: 11px;
       color: #666;
+      line-height: 1.5;
     }
   </style>
 </head>
 <body>
   <h2>YouTube 自動跳過廣告</h2>
-  <button class="btn btn-start" id="btnStart">開始</button>
-  <button class="btn btn-stop" id="btnStop">停止</button>
-  <p class="status" id="status">讀取中…</p>
+  <button class="btn btn-show" id="btnShow">顯示浮動控制</button>
+  <div class="info">
+    <div>• 按 <strong>Z</strong> 鍵跳過廣告</div>
+    <div>• 按 <strong>X</strong> 鍵退出</div>
+  </div>
   <script src="popup.js"></script>
 </body>
 </html>
